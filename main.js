@@ -50,7 +50,7 @@ convertBtn.onclick = (event) => {
 const registerServiceWorker = function() {
 
   if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('https://johngorithm.github.io/alc-currency-converter/sw.js', {
+  navigator.serviceWorker.register('/alc-currency-converter/sw.js', {
     scope: '/'
   }).then( reg => {
     console.log('services worker is set')
