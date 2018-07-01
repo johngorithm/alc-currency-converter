@@ -55,9 +55,6 @@ const registerServiceWorker = function() {
   }).then( reg => {
     console.log('services worker is set')
 		
-		if (!navigator.serviceWorker.controller) {
-      return;
-    }
 
     if (reg.waiting) {
       let result = confirm('New version available');
