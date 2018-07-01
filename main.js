@@ -54,6 +54,45 @@ const registerServiceWorker = function() {
     scope: '/alc-currency-converter/'
   }).then( reg => {
     console.log('services worker is set')
+		
+		if (!navigator.serviceWorker.controller) {
+      return;
+    }
+
+    if (reg.waiting) {
+      let result = confirm('New version available');
+
+      if(result == true) {
+        reg.waiting.postMessage({action: 'skipWaiting'});
+      }
+    }
+
+    if (reg.installing) {
+      reg.installing.addEventListener('statechange', function() {
+        if (reg.installing.state == 'installed') {
+          if (reg.waiting) {
+            let result = confirm('New version available');
+
+            if(result == true) {
+              reg.waiting.postMessage({action: 'skipWaiting'});
+            }
+          }
+        }
+      });
+    }
+
+    reg.addEventListener('updatefound', function() {
+      if (reg.installing.state == 'installed') {
+        if (reg.waiting) {
+          let result = confirm('New version available');
+
+          if(result == true) {
+            reg.waiting.postMessage({action: 'skipWaiting'});
+          }
+        }
+      }
+    });
+		
   }).catch(e => {
     console.log('Not registered')
   })
