@@ -1,5 +1,4 @@
-self.addEventListener('fetch', (event) => {
-  console.log(event.request.url);
-})
 
-// change some more asdkfjal;sk
+
+// Would have love to do more but Andela bootcamp won't let me 
+// Regards
