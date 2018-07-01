@@ -40,11 +40,23 @@ function convertCurrency() {
 }
 
 
-//uncomment to test
+// CONVERSION 
 const convertBtn = document.getElementById('convert-btn');
 convertBtn.onclick = (event) => {
 	convertCurrency();
 }
 
+// SW
+const registerServiceWorker = function() {
+  if (!navigator.serviceWorker) return;
 
+  navigator.serviceWorker.register('./sw.js').then(function(reg) {
+    if (!navigator.serviceWorker.controller) {
+      return;
+    }
+    console.log('SERVEIC IS HERE')
+  })
 
+};
+
+registerServiceWorker()
