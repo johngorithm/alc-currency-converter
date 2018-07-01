@@ -51,7 +51,7 @@ const registerServiceWorker = function() {
 
   if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/alc-currency-converter/sw.js', {
-    scope: '/'
+    scope: '/alc-currency-converter/'
   }).then( reg => {
     console.log('services worker is set')
   }).catch(e => {
