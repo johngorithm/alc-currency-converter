@@ -48,11 +48,16 @@ convertBtn.onclick = (event) => {
 
 // SW
 const registerServiceWorker = function() {
-  if (!navigator.serviceWorker) return;
 
-  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-    console.log('SERVEIC IS HERE')
+  if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', {
+    scope: '/'
+  }).then( reg => {
+    console.log('services worker is set')
+  }).catch(e => {
+    console.log('Not registered')
   })
+}
 
 };
 
